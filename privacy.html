@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Privacy Policy | EchoBliss Garden Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after{box-sizing: border-box;}
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f9fafb;
+    color: #374151;
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    color: #16a34a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #15803d;
+    outline: none;
+  }
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  /* Layout */
+  header, footer {
+    background: #ffffffcc;
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid #d1d5db;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  /* Header */
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: #065f46;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo svg {
+    height: 36px;
+    width: auto;
+    fill: #22c55e;
+  }
+  nav {
+    display: flex;
+    gap: 28px;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 0;
+    position: relative;
+  }
+  nav a::after {
+    content: "";
+    position: absolute;
+    background: #16a34a;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    bottom: -4px;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  nav a:hover::after, nav a:focus::after {
+    width: 100%;
+  }
+  nav a.active::after {
+    width: 100%;
+  }
+  /* Hamburger menu for mobile */
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #065f46;
+  }
+  .mobile-toggle:focus {
+    outline: 2px solid #16a34a;
+    outline-offset: 2px;
+  }
+  .mobile-nav {
+    display: none;
+    background: #f9fafb;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #d1d5db;
+    padding: 16px 24px;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 999;
+  }
+  .mobile-nav.show {
+    display: flex;
+  }
+  .mobile-nav a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #065f46;
+  }
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #a7f3d0 0%, #22c55e 100%);
+    color: #064e3b;
+    padding: 100px 24px 120px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.6em;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.1;
+  }
+  /* Privacy content */
+  main {
+    padding: 48px 24px;
+    max-width: 960px;
+    margin: 0 auto 80px;
+  }
+  main h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #065f46;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  section.privacy-point {
+    margin-bottom: 48px;
+  }
+  section.privacy-point h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: 16px;
+  }
+  section.privacy-point p {
+    font-size: 1rem;
+    color: #374151;
+    text-align: justify;
+    white-space: pre-wrap;
+  }
+  /* Footer */
+  footer {
+    padding: 48px 24px;
+    background: #065f46;
+    color: #dcfce7;
+    text-align: center;
+    font-size: 1rem;
+    user-select: none;
+  }
+  footer a {
+    color: #a7f3d0;
+  }
+  footer a:hover,
+  footer a:focus {
+    color: #bbf7d0;
+  }
+  @media (min-width: 768px) {
+    footer {
+      text-align: left;
+      padding: 64px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      font-size: 1.125rem;
+    }
+  }
+  /* Responsive Header nav */
+  @media (max-width: 767px) {
+    nav {
+      display: none;
+    }
+    .mobile-toggle {
+      display: inline-block;
+    }
+  }
+  @media (min-width: 768px) {
+    .mobile-nav {
+      display: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+<header role="banner" aria-label="Primary Navigation">
+  <div class="container header-container">
+    <a href="index.html" class="logo" aria-label="EchoBliss Garden Design Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M32 2C17 2 4 15 4 30c0 12 10 28 28 32 18-4 28-20 28-32C60 15 47 2 32 2zm0 56c-14 0-24-11-24-24S18 10 32 10 56 21 56 34 46 58 32 58z"/>
+        <path fill="#22c55e" d="M32 14c-9 0-15 8-15 16 0 8 6 14 15 16 2 0 8-4 8-12s-6-20-8-20z"/>
+      </svg>
+      EchoBliss
+    </a>
+    <nav role="navigation" aria-label="Primary">
+    <a href="index.html" tabindex="0">Home</a>
+        <a href="privacy.html" tabindex="0"aria-current="page">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
+    </nav>
+    <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-navigation">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="28" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile Primary Navigation" hidden>
+    <a href="index.html">Home</a>
+    <a href="#" class="active" aria-current="page">Privacy Policy</a>
+  </nav>
+</header>
+
+<section class="hero" role="banner" aria-label="Privacy Policy">
+  <h1>Privacy Policy</h1>
+</section>
+
+<main role="main" aria-label="Privacy Policy Details">
+  <h2>Our Commitment to Your Privacy</h2>
+
+  <section class="privacy-point" id="point1">
+    <h3>1. Introduction</h3>
+    <p>
+      This Privacy Policy explains how EchoBliss Garden Design ("we," "our," or "us") collects, uses, discloses, and safeguards your information when you visit our website or use our services. We are committed to protecting your privacy and ensuring that your personal information is handled responsibly. Please take time to read this policy carefully.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point2">
+    <h3>2. Information We Collect</h3>
+    <p>
+      We collect information you provide directly to us, such as when you request services, fill forms, subscribe to newsletters, or contact us. This includes your name, email, phone number, address, payment details, and any other information you choose to share. Additionally, we collect automated information through cookies and tracking technologies.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point3">
+    <h3>3. Use of Personal Information</h3>
+    <p>
+      The personal information we collect is used to provide, operate, and improve our services; communicate with you; process payments; send marketing materials when permitted; comply with legal obligations; and enhance your experience. We ensure that your data is used lawfully and only for the purposes described here.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point4">
+    <h3>4. Cookies and Tracking Technologies</h3>
+    <p>
+      Our website uses cookies and similar technologies to remember your preferences, analyze site usage, deliver personalized content, and improve functionality. You can manage cookie preferences through your browser settings, but disabling cookies may affect some features or services.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point5">
+    <h3>5. Sharing Your Information</h3>
+    <p>
+      We do not sell or rent your personal information to third parties. We may share information with trusted service providers who assist us in operating our business, complying with legal processes, or protecting our rights. These parties are obligated to keep your data confidential and use it only for the specified tasks.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point6">
+    <h3>6. Data Security</h3>
+    <p>
+      We implement comprehensive security measures using encryption, firewalls, secure servers, and regular monitoring to protect your information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is completely secure, so we cannot guarantee absolute security.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point7">
+    <h3>7. Data Retention</h3>
+    <p>
+      We retain your personal data only for as long as necessary to fulfill the purposes outlined in this policy, comply with our legal obligations, resolve disputes, or enforce our agreements. Once the data is no longer needed, we securely delete or anonymize it to protect your privacy.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point8">
+    <h3>8. Your Rights and Choices</h3>
+    <p>
+      Depending on your location, you may have rights under applicable data protection laws, including access, correction, deletion, restriction, or data portability. You can manage your preferences, opt out of marketing emails, and withdraw consent where applicable. Contact us to exercise these rights.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point9">
+    <h3>9. Children’s Privacy</h3>
+    <p>
+      Our website and services are not intended for individuals under the age of 13. We do not knowingly collect personal information from children under 13. If we learn that a child has provided us with personal data, we take steps to delete it promptly.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point10">
+    <h3>10. International Data Transfers</h3>
+    <p>
+      As a global company, your personal information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards, such as standard contractual clauses or compliance with recognized data privacy frameworks, to protect your data in transit and storage.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point11">
+    <h3>11. Third-Party Websites</h3>
+    <p>
+      Our website may contain links to third-party websites or services. We are not responsible for their privacy practices or content. We encourage you to review the privacy policies of any third-party sites before providing them with your personal information.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point12">
+    <h3>12. Marketing and Communications</h3>
+    <p>
+      With your consent, we send promotional materials and updates about our services. You can opt out of these communications at any time by following the unsubscribe instructions provided in the emails or contacting us directly. We respect your preferences and will not send unwanted communications.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point13">
+    <h3>13. Analytics and Performance Monitoring</h3>
+    <p>
+      We use analytics tools to understand how visitors interact with our site, measure performance, and improve user experience. These tools may collect information such as IP addresses, device information, and browsing behavior in an aggregated and anonymized form.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point14">
+    <h3>14. Data Accuracy and Updates</h3>
+    <p>
+      It is important that the personal information we hold is accurate and up to date. Please notify us promptly if your information changes so we can maintain reliable records and provide you with effective services.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point15">
+    <h3>15. Legal Basis for Processing</h3>
+    <p>
+      We rely on various legal bases for processing your personal data, including your consent, contractual necessity, legitimate interests, and compliance with legal obligations. Where required, we will obtain your explicit consent before processing sensitive data.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point16">
+    <h3>16. Privacy Policy Updates</h3>
+    <p>
+      We may update this policy periodically to reflect changes in our practices, legal requirements, or technological advances. We encourage you to review this page regularly for the latest information. Continued use of our site after any changes indicates acceptance of the updated policy.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point17">
+    <h3>17. Contact Information</h3>
+    <p>
+      If you have questions, concerns, or requests regarding this privacy policy or your personal information, please contact us at info@echoblissgarden.com or by phone at +1 (833) 667-8898. We are committed to addressing your privacy needs promptly and transparently.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point18">
+    <h3>18. Use of Cookies</h3>
+    <p>
+      Cookies are small data files placed on your device to help us provide a better user experience, remember your preferences, enable core functionality, and analyze site traffic. We do not use cookies to collect sensitive personal information without your explicit consent.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point19">
+    <h3>19. Managing Cookies</h3>
+    <p>
+      Most browsers allow you to control or delete cookies through their settings. You can refuse cookies, but this may affect website functionality or reduce your browsing experience. We provide cookie notices and opt-in mechanisms where required by law.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point20">
+    <h3>20. Data Protection Officer</h3>
+    <p>
+      We have appointed a Data Protection Officer responsible for overseeing our compliance with data protection laws and this privacy policy. You may contact the officer via the contact information provided to address privacy-related questions or complaints.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point21">
+    <h3>21. Children's Online Privacy Protection</h3>
+    <p>
+      We comply with the Children’s Online Privacy Protection Act (COPPA) and similar regulations. We do not knowingly collect, maintain, or use personal information from children under 13 years of age. If you believe we have inadvertently collected data from a child, please contact us immediately to request removal.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point22">
+    <h3>22. User-generated Content</h3>
+    <p>
+      If you submit content to our website, such as reviews or comments, we collect any personal information included with your submission. Content you provide becomes publicly available and is governed by this privacy policy and our terms of use.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point23">
+    <h3>23. Third-Party Service Providers</h3>
+    <p>
+      We engage trusted third-party service providers to facilitate our business operations including hosting, analytics, and payment processing. These providers are contractually obligated to maintain the confidentiality and security of your information.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point24">
+    <h3>24. Security Breach Notification</h3>
+    <p>
+      In the unlikely event of a data breach affecting your personal information, we will promptly notify you and regulators as required by law, detailing the nature of the breach and steps taken to mitigate harm.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point25">
+    <h3>25. Cross-border Transfers</h3>
+    <p>
+      Where your personal information is transferred across borders, we ensure that adequate safeguards are in place, such as standard contractual clauses or compliance with recognized international privacy frameworks, to protect your data rights.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point26">
+    <h3>26. Retention of Personal Data</h3>
+    <p>
+      We retain your personal information only for as long as necessary for the purposes described, including legal or regulatory obligations, dispute resolution, and enforcement of agreements. We use secure methods to delete or anonymize data that is no longer required.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point27">
+    <h3>27. Third-Party Advertising</h3>
+    <p>
+      We do not use third-party advertising on our website. However, affiliated sites or partners may collect data to deliver targeted ads. We encourage you to review their privacy policies if you engage on such third-party platforms.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point28">
+    <h3>28. Social Media Features</h3>
+    <p>
+      Our website may include social media features such as sharing buttons or feeds. These may collect information and track interactions. We do not control their privacy practices and recommend reviewing the privacy policies of those social platforms.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point29">
+    <h3>29. Marketing Consents</h3>
+    <p>
+      Where required by law, we seek your explicit consent before sending marketing messages. You can withdraw your consent at any time by following the opt-out instructions in communications or by contacting us directly.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point30">
+    <h3>30. Email Communications</h3>
+    <p>
+      We use your email to send order confirmations, service updates, newsletters, and promotional offers with your permission. Emails include unsubscribe options compliant with relevant laws.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point31">
+    <h3>31. Use of Aggregated Data</h3>
+    <p>
+      We may use aggregated, non-identifiable data to analyze trends, improve our services, and better understand our customers' needs. This data cannot be used to identify individual users.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point32">
+    <h3>32. Data Accuracy and Access</h3>
+    <p>
+      You are entitled to access the personal data we hold about you and to request corrections to ensure its accuracy. Please contact us with any data access or correction requests.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point33">
+    <h3>33. Data Portability</h3>
+    <p>
+      Where applicable, you may request your personal data in a structured, commonly used format to transfer it to another service provider or for your records.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point34">
+    <h3>34. Restriction and Objection</h3>
+    <p>
+      You have rights to restrict or object to certain data processing activities, including direct marketing or profiling. These rights are subject to specific legal conditions.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point35">
+    <h3>35. Automated Decision-Making</h3>
+    <p>
+      We do not use automated decision-making or profiling that produces legal effects or significantly affects you.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point36">
+    <h3>36. Links to Other Websites</h3>
+    <p>
+      Our website may contain links to other websites for your convenience. We are not responsible for their privacy practices. You should review each site’s privacy policy separately.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point37">
+    <h3>37. Your Responsibilities</h3>
+    <p>
+      We encourage you to protect your personal data by using strong passwords, avoiding sharing login details, and promptly informing us of any unauthorized use.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point38">
+    <h3>38. Complaints</h3>
+    <p>
+      If you have concerns about our privacy practices, you may submit a complaint to us or the relevant data protection authorities. We are dedicated to resolving complaints efficiently.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point39">
+    <h3>39. Governing Law</h3>
+    <p>
+      This Privacy Policy and related data processing are governed by the laws of the jurisdiction in which EchoBliss Garden Design operates. Any disputes will be resolved in accordance with applicable laws.
+    </p>
+  </section>
+
+  <section class="privacy-point" id="point40">
+    <h3>40. Effective Date</h3>
+    <p>
+      This Privacy Policy is effective as of the date stated at the top of the page and remains in effect until amended. Your continued use of our services signifies your acceptance of any updated policies.
+    </p>
+  </section>
+</main>
+
+<footer role="contentinfo" aria-label="Contact Information">
+  <div class="container">
+    <strong>EchoBliss Garden Design</strong><br/>
+    249 Sullivan St, New York, NY 10012, USA<br/>
+    Phone: +1 (833) 667-8898<br/>
+    <a href="mailto:info@echoblissgarden.com" aria-label="Email EchoBliss Garden Design">info@echoblissgarden.com</a>
+  </div>
+</footer>
+
+<script>
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const mobileNav = document.getElementById('mobile-navigation');
+
+  mobileToggle.addEventListener('click', () => {
+    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true' || false;
+    mobileToggle.setAttribute('aria-expanded', !expanded);
+    if (mobileNav.hasAttribute('hidden')) {
+      mobileNav.removeAttribute('hidden');
+      mobileNav.classList.add('show');
+    } else {
+      mobileNav.setAttribute('hidden', '');
+      mobileNav.classList.remove('show');
+    }
+  });
+
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileToggle.setAttribute('aria-expanded', false);
+      mobileNav.setAttribute('hidden', '');
+      mobileNav.classList.remove('show');
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if(mobileNav.classList.contains('show')){
+      if(e.key === 'Escape'){
+        e.preventDefault();
+        mobileToggle.setAttribute('aria-expanded', false);
+        mobileNav.setAttribute('hidden', '');
+        mobileNav.classList.remove('show');
+        mobileToggle.focus();
+      }
+    }
+  });
+</script>
+</body>
+</html>
+
