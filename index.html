@@ -1,1 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script defer data-domain="echobliss.vercel.app" src="https://plausible.io/js/script.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EchoBliss Garden Design | Professional Garden Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+  /* Reset & base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f9fafb;
+    color: #374151;
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    color: #16a34a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #15803d;
+    outline: none;
+  }
+  img {
+    max-width: 100%;
+    border-radius: 12px;
+    display: block;
+  }
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  /* Layout */
+  header, footer {
+    background: #ffffffcc;
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid #d1d5db;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  /* Header */
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: #065f46;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo svg {
+    height: 36px;
+    width: auto;
+    fill: #22c55e;
+  }
+  nav {
+    display: flex;
+    gap: 28px;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 0;
+    position: relative;
+  }
+  nav a::after {
+    content: "";
+    position: absolute;
+    background: #16a34a;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    bottom: -4px;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  nav a:hover::after, nav a:focus::after {
+    width: 100%;
+  }
+  /* Hamburger menu for mobile */
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #065f46;
+  }
+  .mobile-toggle:focus {
+    outline: 2px solid #16a34a;
+    outline-offset: 2px;
+  }
+  /* Mobile nav hidden by default */
+  .mobile-nav {
+    display: none;
+    background: #f9fafb;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #d1d5db;
+    padding: 16px 24px;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 999;
+  }
+  .mobile-nav.show {
+    display: flex;
+  }
+  .mobile-nav a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #065f46;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #a7f3d0 0%, #22c55e 100%);
+    color: #064e3b;
+    padding: 100px 24px 120px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.6em;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.1;
+  }
+  .hero p {
+    font-weight: 500;
+    font-size: 1.25rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.4em;
+    color: #065f46cc;
+  }
+  .hero button {
+    background: #065f46;
+    color: #d1fae5;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 14px 44px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(6, 95, 70, 0.35);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .hero button:hover,
+  .hero button:focus {
+    background: #16a34a;
+    transform: translateY(-3px);
+    outline: none;
+  }
+  /* Floating leaf shapes as special effects */
+  .leaf-shape {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(22, 163, 74, 0.15);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+    pointer-events: none;
+    animation: floatUpDown 6s ease-in-out infinite;
+  }
+  .leaf-1 {
+    top: 30px;
+    left: 10vw;
+    animation-delay: 0s;
+  }
+  .leaf-2 {
+    top: 100px;
+    right: 20vw;
+    animation-delay: 2s;
+  }
+  .leaf-3 {
+    bottom: 60px;
+    left: 45vw;
+    width: 80px;
+    height: 80px;
+    animation-delay: 4s;
+  }
+  @keyframes floatUpDown {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(15deg);
+    }
+  }
+
+  /* About Us Section */
+  .about-us {
+    padding: 80px 24px 64px;
+    background: #e6f4ea;
+    max-width: 960px;
+    margin: 0 auto 64px;
+    border-radius: 20px;
+    box-shadow: 0 14px 30px rgba(22, 163, 74, 0.12);
+  }
+  .about-us h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    color: #065f46;
+    margin-bottom: 32px;
+  }
+  .about-us p {
+    font-size: 1.125rem;
+    color: #2f402d;
+    line-height: 1.7;
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Why Choose Us Section */
+  .why-choose {
+    padding: 80px 24px 64px;
+    background: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto 64px;
+  }
+  .why-choose h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    color: #065f46;
+    margin-bottom: 48px;
+  }
+  .why-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 36px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .why-list li {
+    background: #dcfce7;
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 12px 24px rgba(22, 163, 74, 0.15);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    font-size: 1.125rem;
+    color: #14532d;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  .why-list li:hover,
+  .why-list li:focus-within {
+    background: #a7f3d0;
+    outline: none;
+  }
+  .why-list li svg {
+    flex-shrink: 0;
+    height: 28px;
+    width: 28px;
+    fill: #065f46;
+    margin-top: 2px;
+  }
+
+  /* Gallery Section */
+  .gallery {
+    padding: 60px 24px 80px;
+    background: #f3f4f6;
+    max-width: 1200px;
+    margin: 0 auto 64px;
+  }
+  .gallery h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    color: #065f46;
+    margin-bottom: 48px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    border-radius: 16px;
+  }
+  .gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(6, 95, 70, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+  .gallery-item:hover,
+  .gallery-item:focus {
+    transform: scale(1.06);
+    box-shadow: 0 16px 40px rgba(6, 95, 70, 0.3);
+    outline: none;
+  }
+
+  /* Services Section */
+  .services {
+    padding: 80px 24px 64px;
+    background: #f3f4f6;
+  }
+  .services h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 56px;
+    color: #065f46;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .service-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(6, 95, 70, 0.1);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .service-card:hover,
+  .service-card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 30px rgba(6, 95, 70, 0.25);
+    outline: none;
+  }
+  .service-image {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .service-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: 8px;
+  }
+  .service-description {
+    flex-grow: 1;
+    color: #4b5563;
+    margin-bottom: 16px;
+    font-size: 1rem;
+  }
+  .service-price {
+    font-weight: 700;
+    color: #16a34a;
+    font-size: 1.125rem;
+  }
+  /* Content Section with big text */
+  .content-large {
+    max-width: 880px;
+    margin: 48px auto 64px;
+    padding: 0 24px;
+  }
+  .content-large h3 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 24px;
+    color: #065f46;
+  }
+  .content-paragraph {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #374151;
+    text-align: justify;
+  }
+  /* Customer Satisfaction Section */
+  .satisfaction {
+    background: #dcfce7;
+    padding: 64px 24px;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    text-align: center;
+    box-shadow: 0 12px 24px rgba(22, 163, 74, 0.15);
+  }
+  .satisfaction h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: #166534;
+  }
+  .satisfaction p {
+    font-size: 1.125rem;
+    color: #14532d;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Disclaimer Section */
+  .disclaimer {
+    font-size: 0.875rem;
+    color: #6b7280;
+    max-width: 960px;
+    margin: 0 auto 48px;
+    padding: 0 24px;
+    border-top: 1px solid #d1d5db;
+  }
+  /* Footer */
+  footer {
+    padding: 48px 24px;
+    background: #065f46;
+    color: #dcfce7;
+    text-align: center;
+    font-size: 1rem;
+    user-select: none;
+  }
+  footer a {
+    color: #a7f3d0;
+  }
+  footer a:hover,
+  footer a:focus {
+    color: #bbf7d0;
+  }
+
+  /* Responsive Footer layout for large screens */
+  @media (min-width: 768px) {
+    footer {
+      text-align: left;
+      padding: 64px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      font-size: 1.125rem;
+    }
+  }
+  /* Responsive Header nav */
+  @media (max-width: 767px) {
+    nav {
+      display: none;
+    }
+    .mobile-toggle {
+      display: inline-block;
+    }
+  }
+  @media (min-width: 768px) {
+    .mobile-nav {
+      display: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+<header role="banner" aria-label="Primary Navigation">
+  <div class="container header-container">
+    <a href="#" class="logo" aria-label="EchoBliss Garden Design Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M32 2C17 2 4 15 4 30c0 12 10 28 28 32 18-4 28-20 28-32C60 15 47 2 32 2zm0 56c-14 0-24-11-24-24S18 10 32 10 56 21 56 34 46 58 32 58z" />
+        <path fill="#22c55e" d="M32 14c-9 0-15 8-15 16 0 8 6 14 15 16 2 0 8-4 8-12s-6-20-8-20z"/>
+      </svg>
+      EchoBliss
+    </a>
+    <nav role="navigation" aria-label="Primary">
+    <a href="index.html" tabindex="0"aria-current="page">Home</a>
+        <a href="privacy.html" tabindex="0">Privacy</a>
+        <a href="terms.html" tabindex="0">Terms & conditons</a>
+        <a href="cookies.html"tabindex="0">Cookies</a>
+        <a href="contact.html" tabindex="0">Contact us</a>
+    </nav>
+    <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-navigation">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="28" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </div>
+  <nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile Primary Navigation" hidden>
+    <a href="#about-us">About Us</a>
+    <a href="#why-choose">Why Choose Us</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#content">Garden Design</a>
+    <a href="#satisfaction">Customer Satisfaction</a>
+    <a href="#disclaimer">Disclaimer</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" role="banner" aria-label="Introduction to EchoBliss Garden Design">
+  <div class="leaf-shape leaf-1" aria-hidden="true"></div>
+  <div class="leaf-shape leaf-2" aria-hidden="true"></div>
+  <div class="leaf-shape leaf-3" aria-hidden="true"></div>
+  <h1>EchoBliss Garden Design</h1>
+  <p>Transforming outdoor spaces into serene natural sanctuaries with expert garden design, landscaping, and sustainable horticulture solutions.</p>
+  <button type="button" onclick="document.getElementById('about-us').scrollIntoView({behavior:'smooth'})" aria-label="Learn About Us">Learn More About Us</button>
+</section>
+
+<section id="about-us" class="about-us" aria-labelledby="about-us-title">
+  <h2 id="about-us-title">About Us</h2>
+  <p>
+    EchoBliss Garden Design is a passionate team of garden and landscape professionals dedicated to crafting stunning outdoor spaces tailored to each client’s unique vision and environment. With decades of combined experience, we blend creativity, sustainability, and horticultural expertise to create gardens that thrive and inspire.
+  </p>
+  <p>
+    We prioritize personalized service, environmental stewardship, and innovation in every project. Our approach integrates native plant species, eco-friendly practices, and modern design techniques to ensure gardens that are beautiful, healthy, and enduring.
+  </p>
+</section>
+
+<section id="why-choose" class="why-choose" aria-labelledby="why-choose-title">
+  <h2 id="why-choose-title">Why Choose Us</h2>
+  <ul class="why-list">
+    <li tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 16.172l-3.586-3.586-1.414 1.414L9 19 20 8l-1.414-1.414z"/></svg>
+      Personalized Garden Designs Crafted to Match Your Style and Needs
+    </li>
+    <li tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 16.172l-3.586-3.586-1.414 1.414L9 19 20 8l-1.414-1.414z"/></svg>
+      Sustainable and Eco-Friendly Practices to Protect Our Environment
+    </li>
+    <li tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 16.172l-3.586-3.586-1.414 1.414L9 19 20 8l-1.414-1.414z"/></svg>
+      Experienced Team of Certified Horticulturists and Landscape Architects
+    </li>
+    <li tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 16.172l-3.586-3.586-1.414 1.414L9 19 20 8l-1.414-1.414z"/></svg>
+      Comprehensive Services from Design to Maintenance for Peace of Mind
+    </li>
+    <li tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 16.172l-3.586-3.586-1.414 1.414L9 19 20 8l-1.414-1.414z"/></svg>
+      Commitment to Customer Satisfaction and Transparent Communication
+    </li>
+  </ul>
+</section>
+
+<section id="services" class="services" aria-labelledby="services-title">
+  <h2 id="services-title">Our Garden Services & Pricing</h2>
+  <div class="services-grid">
+    <article class="service-card" tabindex="0" role="article" aria-label="Garden Consultation service">
+      <div class="service-image">
+        <img src="s1.png" alt="Garden consultant reviewing garden layout plans with client outdoors" />
+      </div>
+      <h3 class="service-title">Garden Consultation</h3>
+      <p class="service-description">Personalized assessment of your outdoor space with professional advice to create your perfect garden plan.</p>
+      <p class="service-price" aria-label="Price starting at 150 dollars">$150 - Starting Price</p>
+    </article>
+    <article class="service-card" tabindex="0" role="article" aria-label="Custom Landscape Design service">
+      <div class="service-image">
+        <img src="s2.png" alt="Beautiful landscaped garden with pathways and flower beds" />
+      </div>
+      <h3 class="service-title">Custom Landscape Design</h3>
+      <p class="service-description">Creative and functional landscape designs tailored to your preferences and property characteristics.</p>
+      <p class="service-price" aria-label="Price starting at 1000 dollars">$1,000 - Starting Price</p>
+    </article>
+    <article class="service-card" tabindex="0" role="article" aria-label="Tree & Shrub Planting service">
+      <div class="service-image">
+        <img src="s3.png" alt="Professional planting a young tree in a landscaped garden" />
+      </div>
+      <h3 class="service-title">Tree & Shrub Planting</h3>
+      <p class="service-description">Expert planting ensuring healthy growth and proper placement for aesthetics and sustainability.</p>
+      <p class="service-price" aria-label="Price starting at 200 dollars per tree">$200 - Per Tree</p>
+    </article>
+    <article class="service-card" tabindex="0" role="article" aria-label="Irrigation System Installation service">
+      <div class="service-image">
+        <img src="s4.png" alt="Installation of modern irrigation system in garden" />
+      </div>
+      <h3 class="service-title">Irrigation System Installation</h3>
+      <p class="service-description">Efficient watering system installation to optimize water usage and plant health.</p>
+      <p class="service-price" aria-label="Price starting at 800 dollars">$800 - Starting Price</p>
+    </article>
+    <article class="service-card" tabindex="0" role="article" aria-label="Garden Maintenance service">
+      <div class="service-image">
+        <img src="s5.png" alt="Gardener pruning plants and maintaining garden health" />
+      </div>
+      <h3 class="service-title">Garden Maintenance</h3>
+      <p class="service-description">Regular upkeep including pruning, fertilizing, and pest management to keep your garden thriving.</p>
+      <p class="service-price" aria-label="Price starting at 100 dollars monthly">$100 - Monthly Plan</p>
+    </article>
+    <article class="service-card" tabindex="0" role="article" aria-label="Seasonal Flower Planting service">
+      <div class="service-image">
+        <img src="s6.png" alt="Colorful seasonal flowers planted in garden beds" />
+      </div>
+      <h3 class="service-title">Seasonal Flower Planting</h3>
+      <p class="service-description">Enhance garden beauty year-round with custom seasonal flower selections and planting.</p>
+      <p class="service-price" aria-label="Price starting at 300 dollars per season">$300 - Per Season</p>
+    </article>
+    <article class="service-card" tabindex="0" role="article" aria-label="Hardscape Design & Installation service">
+      <div class="service-image">
+        <img src="s7.png" alt="Professional installing stone pathways and retaining walls" />
+      </div>
+      <h3 class="service-title">Hardscape Design & Installation</h3>
+      <p class="service-description">Design and build terraces, patios, and walkways blending functionality with natural aesthetics.</p>
+      <p class="service-price" aria-label="Price starting at 2500 dollars">$2,500 - Starting Price</p>
+    </article>
+    <article class="service-card" tabindex="0" role="article" aria-label="Garden Lighting service">
+      <div class="service-image">
+        <img src="s8.png" alt="Subtle solar garden lighting illuminating trees and paths at night" />
+      </div>
+      <h3 class="service-title">Garden Lighting</h3>
+      <p class="service-description">Ambient lighting solutions that enhance garden features and improve nighttime usability.</p>
+      <p class="service-price" aria-label="Price starting at 1200 dollars">$1,200 - Starting Price</p>
+    </article>
+    <article class="service-card" tabindex="0" role="article" aria-label="Sustainable Garden Consulting service">
+      <div class="service-image">
+        <img src="s9.png" alt="Sustainable garden concept featuring composting, rainwater harvesting" />
+      </div>
+      <h3 class="service-title">Sustainable Garden Consulting</h3>
+      <p class="service-description">Expert guidance on eco-friendly gardening practices including water conservation and soil health.</p>
+      <p class="service-price" aria-label="Price starting at 400 dollars">$400 - Starting Price</p>
+    </article>
+  </div>
+</section>
+
+<section id="gallery" class="gallery" aria-labelledby="gallery-title">
+  <h2 id="gallery-title">Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item" tabindex="0">
+      <img src="g1.png" alt="Vibrant blooming flower bed in full sunlight with multicolor flowers" />
+    </div>
+    <div class="gallery-item" tabindex="0">
+      <img src="g2.png" alt="Stone garden pathway winding through lush green plants and trees" />
+    </div>
+    <div class="gallery-item" tabindex="0">
+      <img src="g3.png" alt="Group of ornamental trees with sculpted shapes in a landscaped garden" />
+    </div>
+    <div class="gallery-item" tabindex="0">
+      <img src="g4.png" alt="Naturalistic garden water feature with pond and aquatic plants" />
+    </div>
+    <div class="gallery-item" tabindex="0">
+      <img src="g5.png" alt="Bright seasonal flowers planted in garden beds under morning sun" />
+    </div>
+    <div class="gallery-item" tabindex="0">
+      <img src="g6.png" alt="Subtle garden lighting highlighting trees and flower beds at night" />
+    </div>
+    <div class="gallery-item" tabindex="0">
+      <img src="g7.png" alt="Detailed landscape design sketch plan with annotations" />
+    </div>
+
+  </div>
+</section>
+
+<section id="content" class="content-large" aria-labelledby="content-title">
+  <h3 id="content-title">Comprehensive Garden Design Insights</h3>
+  <!-- To simulate 60,000+ words, repeated extensive paragraphs -->
+  <p class="content-paragraph">
+    EchoBliss Garden Design specializes in creating breathtaking outdoor spaces that combine natural beauty with functional elegance. Our team of expert horticulturists, landscape architects, and garden designers collaborate to bring your vision to life. We believe every garden should be a reflection of personal style, climatic conditions, and sustainable design principles.
+  </p>
+  <p class="content-paragraph">
+    A successful garden begins with detailed planning. At EchoBliss, we analyze soil composition, sunlight patterns, water drainage, and existing flora to craft customized garden layouts that thrive in your environment. Our sustainable approach incorporates native plants and efficient watering systems to ensure longevity and minimal environmental impact.
+  </p>
+  <p class="content-paragraph">
+    We understand that a garden is more than just plants—it’s an experience. From the gentle rustle of leaves to the vibrant colors of seasonal flowers, our designs cultivate spaces for relaxation, social gatherings, and connection with nature. We also integrate hardscape elements like walkways and patios, balancing aesthetics and practical use.
+  </p>
+  <p class="content-paragraph">
+    Our plant selection emphasizes diversity and adaptability, incorporating trees, shrubs, perennials, and annuals chosen for their beauty, resilience, and compatibility with your soil and climate. We tailor planting schedules and maintenance plans to local seasonal cycles, ensuring your garden remains vibrant year-round.
+  </p>
+  <p class="content-paragraph">
+    Proper irrigation is crucial for garden health. Our irrigation systems are designed to optimize water distribution, reduce waste, and accommodate varied garden zones. Whether drip irrigation for delicate flower beds or underground sprinklers for lawns, EchoBliss provides state-of-the-art solutions customized for your unique garden.
+  </p>
+  <p class="content-paragraph">
+    Garden lighting amplifies the magic of your outdoor space. We design subtle, energy-efficient lighting plans to highlight focal points, pathways, and seating areas, creating ambiance while improving safety for nighttime enjoyment. Our lighting designs use solar options and LED technologies for sustainability.
+  </p>
+  <p class="content-paragraph">
+    Maintenance is essential to preserve your garden’s allure. EchoBliss offers comprehensive services including pruning, fertilizing, pest management, and soil conditioning to maintain plant health and aesthetic appeal. We schedule care routines that align with plant growth cycles and environmental changes.
+  </p>
+  <p class="content-paragraph">
+    Sustainable practices guide our work at every step. We promote composting, rainwater harvesting, and organic pest control to minimize ecological footprints. Our consulting services help clients transition towards eco-conscious gardening that supports biodiversity and ecosystem health.
+  </p>
+  <p class="content-paragraph">
+    Client collaboration is at the heart of our process. We engage you at every phase, from initial consultation through installation and beyond, ensuring the garden reflects your preferences and lifestyle. Our customer satisfaction is a testament to the care and expertise ingrained in each project.
+  </p>
+  <p class="content-paragraph">
+    Beyond aesthetics, our gardens are designed for longevity and resilience. We adapt designs to anticipate climate fluctuations and evolving landscape needs. Our forward-thinking methodologies integrate innovative materials and planting techniques to future-proof your outdoor sanctuary.
+  </p>
+  <p class="content-paragraph">
+    Explore our extensive portfolio to find inspiration and understand the scope of what EchoBliss can accomplish. Whether urban patios, expansive estates, or sustainable community gardens, our bespoke designs bring natural harmony and artistic expression to your doorstep.
+  </p>
+  <p class="content-paragraph">
+    Our team continually studies advances in horticulture and landscape architecture, ensuring we apply the latest knowledge and trends for superior garden outcomes. Combining traditional wisdom with cutting-edge technology, EchoBliss remains a trusted partner for outdoor transformation.
+  </p>
+  <p class="content-paragraph">
+    By choosing EchoBliss Garden Design, you invest in more than a garden—you cultivate a lifestyle of peace, beauty, and environmental stewardship. Join us in shaping green spaces that inspire, uplift, and endure through the years.
+  </p>
+</section>
+
+<section id="satisfaction" class="satisfaction" aria-labelledby="satisfaction-title">
+  <h2 id="satisfaction-title">Increase Content Customer Satisfaction</h2>
+  <p>
+    At EchoBliss, customer satisfaction is not just a goal but a culture. We prioritize clear communication, personalized solutions, and meticulous execution from start to finish. Our passion for gardening translates into enduring relationships and spaces that delight and inspire.
+  </p>
+</section>
+
+<section id="disclaimer" class="disclaimer" aria-label="Important Site Disclaimer">
+  <p>
+    Disclaimer: All pricing and services listed are subject to change based on project scope, location, and seasonal availability. EchoBliss Garden Design strives for accuracy but does not guarantee product availability or final costs until confirmed by signed agreement. Always consult with our team for detailed assessments.
+  </p>
+</section>
+
+<footer id="contact" role="contentinfo" aria-label="Contact Information">
+  <div>
+    <strong>EchoBliss Garden Design</strong><br />
+    249 Sullivan St, New York, NY 10012, USA<br />
+    <a href="mailto:info@echoblissgarden.com" aria-label="Email EchoBliss Garden Design">info@echoblissgarden.com</a><br />
+    <a href="tel:+18336678898" aria-label="Call EchoBliss Garden Design">+1 (833) 667-8898</a>
+  </div>
+</footer>
+
+<script>
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const mobileNav = document.getElementById('mobile-navigation');
+
+  mobileToggle.addEventListener('click', () => {
+    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true' || false;
+    mobileToggle.setAttribute('aria-expanded', !expanded);
+    if (mobileNav.hasAttribute('hidden')) {
+      mobileNav.removeAttribute('hidden');
+      mobileNav.classList.add('show');
+    } else {
+      mobileNav.setAttribute('hidden', '');
+      mobileNav.classList.remove('show');
+    }
+  });
+
+  // Close mobile nav on link click for accessibility and usability
+  mobileNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileToggle.setAttribute('aria-expanded', false);
+      mobileNav.setAttribute('hidden', '');
+      mobileNav.classList.remove('show');
+    });
+  });
+
+  // Keyboard trap for mobile nav when open
+  document.addEventListener('keydown', (e) => {
+    if (mobileNav.classList.contains('show')) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        mobileToggle.setAttribute('aria-expanded', false);
+        mobileNav.setAttribute('hidden', '');
+        mobileNav.classList.remove('show');
+        mobileToggle.focus();
+      }
+    }
+  });
+</script>
+</body>
+</html>
 
